@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="RegisterStyle.css">
+</head>
+
+<body>
+    <div class="register-container">
+        <h2>Đăng ký</h2>
+        <p>Đã có tài khoản? <a href="LoginPage.html">Đăng nhập</a></p>
+        <form action="#" method="POST" id="register-form">
+            <div class="step" data-step="1">
+                <label for="register-username">Tên tài khoản:</label>
+                <input type="text" id="register-username" name="username" required>
+                <button type="button" onclick="nextStep(1)">Tiếp tục</button>
+            </div>
+
+            <div class="step" data-step="2" style="display: none;">
+                <label for="register-password">Mật khẩu:</label>
+                <input type="password" id="register-password" name="password" required>
+                <button type="button" onclick="nextStep(2)">Tiếp tục</button>
+                <button type="button" onclick="prevStep(2)">Quay lại</button>
+            </div>
+
+            <div class="step" data-step="3" style="display: none;">
+                <label for="register-lastname">Họ và tên đệm:</label>
+                <input type="text" id="register-lastname" name="lastname" required>
+                <label for="register-firstname">Tên:</label>
+                <input type="text" id="register-firstname" name="firstname" required>
+                <button type="button" onclick="nextStep(3)">Tiếp tục</button>
+                <button type="button" onclick="prevStep(3)">Quay lại</button>
+            </div>
+
+            <div class="step" data-step="4" style="display: none;">
+                <label for="register-phone">Số điện thoại:</label>
+                <input type="tel" id="register-phone" name="phone" required>
+                <label for="register-email">Email:</label>
+                <input type="email" id="register-email" name="email" required>
+                <button type="button" onclick="nextStep(4)">Tiếp tục</button>
+                <button type="button" onclick="prevStep(4)">Quay lại</button>
+            </div>
+
+            <div class="step" data-step="5" style="display: none;">
+                <label for="account-type">Loại tài khoản:</label>
+                <select id="account-type" name="account-type" required>
+                    <option value="customer" selected>Khách hàng</option>
+                    <option value="admin">Admin</option>
+                </select>
+
+                <div id="customer-address">
+                    <label for="register-address">Địa chỉ:</label>
+                    <input type="text" id="register-address" name="address">
+                </div>
+
+                <button type="submit">Đăng ký</button>
+                <button type="button" onclick="prevStep(5)">Quay lại</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function nextStep(step) {
+            // Hide current step
+            const currentStep = document.querySelector(`[data-step="${step}"]`);
+            currentStep.style.display = "none";
+            
+            // Show next step
+            const nextStep = document.querySelector(`[data-step="${step + 1}"]`);
+            nextStep.style.display = "block";
+        }
+
+        function prevStep(step) {
+            // Hide current step
+            const currentStep = document.querySelector(`[data-step="${step}"]`);
+            currentStep.style.display = "none";
+            
+            // Show previous step
+            const prevStep = document.querySelector(`[data-step="${step - 1}"]`);
+            prevStep.style.display = "block";
+        }
+
+        // JavaScript để hiển thị hoặc ẩn địa chỉ khi người dùng chọn "Khách hàng"
+        const accountTypeSelect = document.getElementById("account-type");
+        const customerAddressDiv = document.getElementById("customer-address");
+
+        // Kiểm tra nếu là khách hàng mặc định, thì hiển thị địa chỉ ngay
+        if (accountTypeSelect.value === "customer") {
+            customerAddressDiv.style.display = "block";
+        } else {
+            customerAddressDiv.style.display = "none";
+        }
+
+        accountTypeSelect.addEventListener("change", function () {
+            if (accountTypeSelect.value === "customer") {
+                customerAddressDiv.style.display = "block"; // Hiển thị trường địa chỉ cho khách hàng
+            } else {
+                customerAddressDiv.style.display = "none"; // Ẩn trường địa chỉ cho admin
+            }
+        });
+    </script>
+</body>
+
+</html>
