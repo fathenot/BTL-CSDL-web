@@ -1,0 +1,32 @@
+.container-fluid {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 200px; /* Đặt chiều rộng cho thanh điều hướng */
+    height: 100vh; /* Chiếm hết chiều cao màn hình */
+    background-color: #f8f9fa; /* Màu nền cho thanh điều hướng */
+    position: fixed; /* Cố định thanh bên trái màn hình */
+    top: 0;
+    left: 0;
+    padding-top: 20px; /* Khoảng cách trên */
+}
+
+ul {
+    padding: 0;
+    list-style: none; /* Bỏ dấu chấm đầu dòng */
+}
+
+li {
+    margin: 20px 0; /* Khoảng cách giữa các mục */
+}
+
+a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #000; /* Màu chữ */
+    font-size: 16px;
+    display: block; /* Để a chiếm hết chiều rộng của li */
+    padding: 10px 15px;
+}
+
+a:hover {
+    background-color: #007bff; /* Màu nền khi hover */
+    color: white; /* Màu chữ khi hover */
+}
