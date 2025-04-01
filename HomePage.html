@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trang Thương Mại Điện Tử</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <style>
+        /* Tùy chỉnh thêm CSS */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
+            z-index: 1000;
+        }
+        .dropdown {
+            position: absolute;
+            background: white;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 200px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        .dropdown.show {
+            display: block;
+        }
+        .dropdown li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .dropdown li:hover {
+            background: #f0f0f0;
+        }
+        .container {
+            padding-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Navbar -->
+        <nav class="container-fluid">
+            <ul>
+                <li><strong>Thương Mại Điện Tử</strong></li>
+            </ul>
+            <ul>
+                <li><a href="#home">Trang chủ</a></li>
+                <li @mouseenter="showDropdown = true" @mouseleave="showDropdown = false">
+                    <a href="#products">Danh mục</a>
+                    <ul :class="{'dropdown': true, 'show': showDropdown}">
+                        <li><a href="#category1">Danh mục 1</a></li>
+                        <li><a href="#category2">Danh mục 2</a></li>
+                        <li><a href="#category3">Danh mục 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+                <li><a href="#login" role="button">Đăng nhập</a></li>
+            </ul>
+        </nav>
+
+        <!-- Nội dung chính -->
+        <main class="container">
+            <div class="grid">
+                <section>
+                    <hgroup>
+                        <h2>Chào mừng đến với cửa hàng của chúng tôi!</h2>
+                        <h3>Mua sắm dễ dàng - Giao hàng tận nơi</h3>
+                    </hgroup>
+                    <p>
+                        Trang web thương mại điện tử hàng đầu cung cấp những sản phẩm chất lượng với mức giá cạnh tranh.
+                        Hãy duyệt qua danh mục sản phẩm của chúng tôi ngay hôm nay!
+                    </p>
+                    <figure>
+                        <img src="https://source.unsplash.com/800x400/?shopping,ecommerce" alt="Thương mại điện tử">
+                        <figcaption><a href="https://unsplash.com/s/photos/ecommerce" target="_blank">Ảnh minh họa từ Unsplash</a></figcaption>
+                    </figure>
+                    <h3>Ưu đãi đặc biệt</h3>
+                    <p>Nhận ngay mã giảm giá 20% cho đơn hàng đầu tiên của bạn!</p>
+                </section>
+            </div>
+        </main>
+
+        <!-- Form đăng ký nhận tin -->
+        <section aria-label="Subscribe">
+            <div class="container">
+                <article>
+                    <hgroup>
+                        <h2>Nhận tin khuyến mãi</h2>
+                        <h3>Đăng ký ngay để không bỏ lỡ các ưu đãi</h3>
+                    </hgroup>
+                    <form class="grid">
+                        <input type="text" id="firstname" name="firstname" placeholder="Họ và tên" aria-label="Họ và tên" required>
+                        <input type="email" id="email" name="email" placeholder="Email của bạn" aria-label="Email của bạn" required>
+                        <button type="submit" onclick="event.preventDefault()">Đăng ký</button>
+                    </form>
+                </article>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="container">
+            <small><a href="#about">Giới thiệu</a> • <a href="#contact">Liên hệ</a></small>
+        </footer>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    showDropdown: false
+                };
+            }
+        });
+        app.mount("#app");
+    </script>
+</body>
+</html>
